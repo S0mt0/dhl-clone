@@ -1,0 +1,66 @@
+// @import "../utils/functions.scss";
+
+.Header {
+  background: linear-gradient(90deg, #fc0 0, #fc0 48%, #ffe57f 70%, #fff0b2);
+
+  nav,
+  .sub_nav {
+    height: 3.6rem;
+    padding-inline: 4.5% 7.4%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+      display: block;
+      width: 100%;
+      width: 136px;
+      object-fit: contain;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+    }
+
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 1.3rem;
+      gap: 6px;
+      height: 100%;
+
+      font-size: 0.78rem;
+      color: #000;
+      line-height: 1.3;
+
+      &:hover {
+        color: #d40511;
+        text-decoration: underline;
+      }
+
+      svg {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .sub_nav {
+    background: #ffff;
+    padding-inline: 6.6%;
+    border-bottom: 1px solid #e0e0e0bd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    a {
+      padding-inline: 1.1rem;
+    }
+  }
+}
