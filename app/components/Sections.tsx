@@ -6,7 +6,7 @@ const Sections = () => {
 
   return (
     <section className={_.section}>
-      <div className={_.row}>
+      <div className={_.section_flex}>
         <div className={_.desc_con}>
           <div className={_.head}>
             <h2>{sectionData.row.heading}</h2>
@@ -15,7 +15,7 @@ const Sections = () => {
           </div>
 
           <div className={_.services_con}>
-            <h4>Servies Available</h4>
+            <h4>Services Available</h4>
             <div className={_.services}>
               {sectionData.row.services.map((service, i) => {
                 const altText =
@@ -50,7 +50,10 @@ const Sections = () => {
         </div>
       </div>
 
-      <div className={_.row_reverse}>
+      <div className={_.section_flex}>
+        <div className={_.img_con}>
+          <img src={sectionData.row_reverse.sectionImage} alt={altText} />
+        </div>
         <div className={_.desc_con}>
           <div className={_.head}>
             <h2>{sectionData.row_reverse.heading}</h2>
@@ -59,7 +62,7 @@ const Sections = () => {
           </div>
 
           <div className={_.services_con}>
-            <h4>Servies Available</h4>
+            <h4>Services Available</h4>
             <div className={_.services}>
               {sectionData.row_reverse.services.map((service, i) => {
                 const altText =
@@ -90,9 +93,6 @@ const Sections = () => {
           <div className={_.cta}>
             <button>{sectionData.row_reverse.buttonText}</button>
           </div>
-        </div>
-        <div className={_.img_con}>
-          <img src={sectionData.row_reverse.sectionImage} alt={altText} />
         </div>
       </div>
     </section>

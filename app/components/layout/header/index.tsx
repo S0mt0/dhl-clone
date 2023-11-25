@@ -1,69 +1,130 @@
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+
 import { FiExternalLink, FiSearch } from "react-icons/fi";
 import { BsChevronDown, BsGlobe2 } from "react-icons/bs";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
 
 import axios from "axios";
 
-import _ from "../../../styles/header.module.scss";
-import Link from "next/link";
+import MobileNavSticky from "./stickyMobileMenu";
+import DesktopNavSticky from "./stickyDesktopMenu";
+import MobileMenu from "./mobileMenu";
+import BackTopButton from "../../back-to-top-btn";
 
-const Header = async () => {
-  // const { data } = await axios.get(" https://ipapi.co/json/");
+import _ from "../../../styles/header.module.scss";
+
+const Header = () => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [country, setCountry] = useState("");
+
+  const toggleMenu = () => {
+    setMenuIsOpen((current) => !current);
+  };
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
+  }, [menuIsOpen]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const getCountry = async () => {
+      try {
+        const { data } = await axios.get(" https://ipapi.co/json/");
+
+        isMounted && setCountry(data.country_name);
+      } catch (error: any) {
+        console.error(error?.message);
+      }
+    };
+
+    getCountry();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
-    <header className={_.Header} id="no-print">
-      <nav>
-        <Link href="/" title="DHL Logo">
-          <img src={"/dhl-logo.svg"} alt="DHL Logo" />
-        </Link>
+    <>
+      <header className={_.Header} id="no-print">
+        <MobileNavSticky toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
+        <DesktopNavSticky />
+        <nav>
+          <Link href="/" title="DHL Logo" id="#" className={_.logo}>
+            <img src={"/dhl-logo.svg"} alt="DHL Logo" />
+          </Link>
 
-        <ul>
-          <li>
-            <a href="#">
-              <span>Find a Location</span>
-              <FiExternalLink />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <FiSearch />
-              <span>Search</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <BsGlobe2 />
-              <span>Nigeria</span>
-              {/* <span>{data.country_name}</span> */}
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div className={_.sub_nav}>
-        <ul>
-          <li>
-            <a href="#">
-              <span>Track</span>
-              <BsChevronDown />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>Track</span>
-              <BsChevronDown />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span>Customer Service</span>
-            </a>
-          </li>
-        </ul>
-        <a href="#">
-          <span>Customer Portal Logins</span>
-          <BsChevronDown />
-        </a>
-      </div>
-    </header>
+          <ul>
+            <li>
+              <a href="#">
+                <span>Find a Location</span>
+                <FiExternalLink />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <FiSearch />
+                <span>Search</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <BsGlobe2 />
+                {/* <span>Nigeria</span> */}
+                <span>{country}</span>
+              </a>
+            </li>
+          </ul>
+
+          <div className={_.menu_btn}>
+            {!menuIsOpen ? (
+              <GiHamburgerMenu onClick={toggleMenu} />
+            ) : (
+              <MdClose onClick={toggleMenu} />
+            )}
+          </div>
+        </nav>
+        {/*  */}
+        {/*  */}
+        <div className={_.sub_nav}>
+          <ul>
+            <li>
+              <a href="#">
+                <span>Track</span>
+                <BsChevronDown />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Track</span>
+                <BsChevronDown />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Customer Service</span>
+              </a>
+            </li>
+          </ul>
+          <a href="#">
+            <span>Customer Portal Logins</span>
+            <BsChevronDown />
+          </a>
+        </div>
+      </header>
+      {!menuIsOpen && <BackTopButton />}
+      {menuIsOpen && (
+        <MobileMenu toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
+      )}
+    </>
   );
 };
 

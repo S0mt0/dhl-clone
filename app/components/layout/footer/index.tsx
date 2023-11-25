@@ -6,26 +6,30 @@ const Footer = () => {
   return (
     <footer className={_.footer} id="no-print">
       <div className={_.footer_links}>
-        {footerData.map((data, i) => (
-          <ul key={i}>
-            <h3>{data.heading}</h3>
-            {data.links.map((link, i) => (
-              <li key={i}>
-                <a href="#">
-                  <span>{link.title}</span>
-                  {typeof link.icon === "function" && <link.icon />}
-                </a>
-              </li>
-            ))}
-          </ul>
-        ))}
+        <ul>
+          {footerData.map((data, i) => (
+            <div key={i}>
+              <h3>{data.heading}</h3>
+              {data.links.map((link, i) => (
+                <li key={i}>
+                  <a href="#">
+                    <span>{link.title}</span>
+                    {typeof link.icon === "function" && <link.icon />}
+                  </a>
+                </li>
+              ))}
+            </div>
+          ))}
+        </ul>
       </div>
+      {/*  */}
+      {/*  */}
       <div className={_.footer_other_links}>
         <div className={_.container_flex}>
           <div className={_.other_links}>
             <div className={_.footer_logo}>
               <picture>
-                <img src="/glo-footer-logo.svg" alt="" />
+                <img src="/glo-footer-logo.svg" alt="logo" />
               </picture>
             </div>
             <div className={_.links}>
@@ -52,7 +56,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={_.copyright}>
-          <p>2023 &copy; - all rights reserved</p>
+          <p>{new Date().getFullYear()} &copy; - all rights reserved</p>
         </div>
       </div>
     </footer>
