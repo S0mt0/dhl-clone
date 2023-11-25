@@ -16,6 +16,7 @@
     "countries-list": "^3.0.6",
     "moment": "^2.29.4",
     "next": "14.0.0",
+    "query-string": "^8.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
