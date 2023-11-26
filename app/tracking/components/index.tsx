@@ -29,7 +29,7 @@ const Index = () => {
   const trackingId = path.get("tracking-id")?.trim();
 
   const { fetchShipment, error, loading, shipment, success, unknownShipment } =
-    useFetchShipmentFunc();
+    useFetchShipmentFunc(trackingId);
 
   useEffect(() => {
     trackingId && fetchShipment(trackingId);
@@ -42,6 +42,11 @@ const Index = () => {
     } else if (tab === "b") {
       setActiveTab((prev) => ({ ...prev, b: !prev.b }));
     }
+  };
+
+  const [activeQA, setActiveQA] = useState<number>(-1);
+  const toggleQA = (index: number) => {
+    setActiveQA((prev) => (prev === index ? -1 : index));
   };
 
   return (
@@ -195,7 +200,16 @@ const Index = () => {
       {!loading && success && (
         <div className={_.more_details_}>
           {faq.faqSuccess.map((data, i) => (
-            <FaqUI data={data} i={i} key={i} />
+            <div className={_.qA} key={i}>
+              <h3 onClick={() => toggleQA(i)}>
+                <span>{data.q}</span>
+                <span className={_.chevron}>
+                  {activeQA === i ? <PiCaretUpBold /> : <PiCaretDownBold />}
+                </span>
+              </h3>
+              {activeQA === i && <p>{data.a}</p>}
+            </div>
+            // <FaqUI data={data} i={i} key={i} />
           ))}
         </div>
       )}
@@ -203,7 +217,16 @@ const Index = () => {
       {!loading && error && (
         <div className={_.more_details_}>
           {faq.faqNotFound.map((data, i) => (
-            <FaqUI data={data} i={i} key={i} />
+            <div className={_.qA} key={i}>
+              <h3 onClick={() => toggleQA(i)}>
+                <span>{data.q}</span>
+                <span className={_.chevron}>
+                  {activeQA === i ? <PiCaretUpBold /> : <PiCaretDownBold />}
+                </span>
+              </h3>
+              {activeQA === i && <p>{data.a}</p>}
+            </div>
+            // <FaqUI data={data} i={i} key={i} />
           ))}
         </div>
       )}

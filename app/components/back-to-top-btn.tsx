@@ -22,16 +22,23 @@ const BackTopButton = () => {
     };
   });
 
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <a
-      href={"#"}
+    <button
       className={_.btt}
+      onClick={handleScroll}
       style={{
         display: showBackToTopBtn ? "grid" : "none",
       }}
     >
       <BsChevronUp />
-    </a>
+    </button>
   );
 };
 

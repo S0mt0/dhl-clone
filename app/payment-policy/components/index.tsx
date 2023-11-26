@@ -11,7 +11,7 @@ const Index = () => {
       <div className={_.print}>
         <PrintButton />
       </div>
-
+      {/*  */}
       <div className={_.payment_policies}>
         <h2>Shipment Seizure and Customs Clearance Policy</h2>
         <div className={_.policies}>
@@ -28,6 +28,7 @@ const Index = () => {
             ))}
           </ol>
         </div>
+        {/*  */}
         <div className={_.consent}>
           <p>
             By utilizing DHLimited&apos;s logistics services, you acknowledge

@@ -1,3 +1,5 @@
+@import "../../../media-query/function.scss";
+
 .policy_con {
   background-color: #fff;
   padding: 3rem 1.9rem;
@@ -8,7 +10,7 @@
   }
 
   .payment_policies {
-    width: 100%;
+    width: 90%;
     max-width: 810px;
     margin: 2rem auto;
 
@@ -37,6 +39,18 @@
     h2 {
       color: #d40511;
       margin-bottom: 1.6rem;
+    }
+
+    @include responsive("mobile") {
+      > h2 {
+        font-size: 1rem;
+      }
+
+      .policies {
+        li {
+          font-size: 0.85rem;
+        }
+      }
     }
   }
 

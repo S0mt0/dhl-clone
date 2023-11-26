@@ -16,7 +16,7 @@
       @content;
     }
   } @else if ($breakpoint ==small) {
-    @media (max-width: 300px) {
+    @media (max-width: 380px) {
       @content;
     }
   } @else if ($breakpoint ==tab) {

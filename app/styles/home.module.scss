@@ -155,6 +155,7 @@
     height: 100%;
     outline: none;
     border: none;
+    border-radius: 0 4px 4px 0;
 
     background: #d40511;
     color: #ffff;
@@ -538,12 +539,16 @@
   bottom: 3rem;
   background-color: #d40511;
   color: white;
-  text-decoration: none;
   border-radius: 4px;
   place-items: center;
   font-size: 1.4rem;
   padding: 0.6rem;
   z-index: 10;
+  cursor: pointer;
+
+  // btn
+  outline: none;
+  border: none;
 
   &:hover {
     background-color: #f10a16;

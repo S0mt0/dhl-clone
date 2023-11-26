@@ -1,5 +1,5 @@
 import _ from "../styles/home.module.scss";
-import TrackFormInput from "./TrackFormInput";
+import TrackFormInput from "./shared/TrackFormInput";
 
 const Hero = () => {
   return (

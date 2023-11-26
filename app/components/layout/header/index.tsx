@@ -28,7 +28,7 @@ const Header = () => {
     if (menuIsOpen) {
       document.body.style.overflowY = "hidden";
     } else {
-      document.body.style.overflowY = "scroll";
+      document.body.style.overflowY = "auto";
     }
   }, [menuIsOpen]);
 
@@ -122,7 +122,11 @@ const Header = () => {
       </header>
       {!menuIsOpen && <BackTopButton />}
       {menuIsOpen && (
-        <MobileMenu toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
+        <MobileMenu
+          toggleMenu={toggleMenu}
+          menuIsOpen={menuIsOpen}
+          country={country}
+        />
       )}
     </>
   );

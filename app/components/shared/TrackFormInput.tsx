@@ -1,20 +1,27 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 import { useFetchShipmentFunc } from "@/sdk";
 
-import _ from "../styles/home.module.scss";
+import _ from "../../styles/home.module.scss";
 
-const TrackFormInput = () => {
+const TrackFormInput = ({ toggleMenu }: { toggleMenu?: () => void }) => {
   const router = useRouter();
+  const query = useSearchParams().get("tracking-id")?.trim();
 
-  const { handleInputChange, trackingNumber } = useFetchShipmentFunc();
+  const { handleInputChange, trackingNumber } = useFetchShipmentFunc(query);
+
+  useEffect(() => {
+    toggleMenu && toggleMenu();
+  }, [toggleMenu, query]);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         router.push(`/tracking?tracking-id=${trackingNumber.trim()}`);
+        toggleMenu && trackingNumber.trim() === query?.trim() && toggleMenu();
       }}
       className={_.form}
     >

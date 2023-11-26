@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState, useEffect } from "react";
 
 import { GlobalContext } from "../provider/context";
 import {
@@ -14,7 +14,8 @@ import axios from "axios";
 export const useGlobalProvider = () => useContext(GlobalContext);
 
 // -------------------------------------------------------------------------
-export const useFetchShipmentFunc = () => {
+
+export const useFetchShipmentFunc = (query?: string) => {
   const {
     shipmentStore: {
       state: { error, loading, success, trackingNumber, unknownShipment },
@@ -22,6 +23,15 @@ export const useFetchShipmentFunc = () => {
       shipment,
     },
   } = useGlobalProvider();
+
+  useEffect(() => {
+    if (query) {
+      shipDispatch({
+        type: ShipmentActions.SET_TRACKING_NUMBER,
+        payload: query,
+      });
+    }
+  }, [query, shipDispatch]);
 
   const fetchShipment = async (trackingId: string) => {
     shipDispatch({ type: ShipmentActions.FETCHING_SHIPMENT_DATA });
@@ -43,8 +53,8 @@ export const useFetchShipmentFunc = () => {
         console.log(shipment);
       }
     } catch (error: any) {
-      console.log(error);
-      console.log(error?.response?.data?.trackingId);
+      console.log(error?.message);
+      // console.log(error?.response?.data?.trackingId);
 
       shipDispatch({
         type: ShipmentActions.SET_UNKNOWN_SHIPMENT,
