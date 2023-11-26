@@ -18,7 +18,7 @@ const MobileNavSticky = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 60) {
         return setShowStickyNav(true);
       }
       setShowStickyNav(false);

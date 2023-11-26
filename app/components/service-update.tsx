@@ -15,23 +15,6 @@ const ServiceUpdate = () => {
               <Image
                 height={36}
                 width={36}
-                src={"/globe-rgb-red.svg"}
-                alt="globe"
-              ></Image>
-            </div>
-            <div className={_.msg}>
-              <h3>Ukrain Situation Update</h3>
-              <p>Read more</p>
-            </div>
-            <div className={_.icon_small}>
-              <FiExternalLink />
-            </div>
-          </div>
-          <div className={_.update_card}>
-            <div className={_.icon_large}>
-              <Image
-                height={36}
-                width={36}
                 src={"/mobile-phone-rgb-red.svg"}
                 alt="phone"
               ></Image>
@@ -45,6 +28,23 @@ const ServiceUpdate = () => {
             </div>
             <div className={_.icon_small}>
               <BsChevronRight />
+            </div>
+          </div>
+          <div className={_.update_card}>
+            <div className={_.icon_large}>
+              <Image
+                height={36}
+                width={36}
+                src={"/globe-rgb-red.svg"}
+                alt="globe"
+              ></Image>
+            </div>
+            <div className={_.msg}>
+              <h3>Ukrain Situation Update</h3>
+              <p>Read more</p>
+            </div>
+            <div className={_.icon_small}>
+              <FiExternalLink />
             </div>
           </div>
         </div>
