@@ -24,7 +24,7 @@ const MobileMenu = ({
   country: string;
   countryFlagImgUrl?: string;
 }) => {
-  const [openTab, setOpenTab] = useState<boolean>(false);
+  const [openTab, setOpenTab] = useState<boolean>(true);
 
   const handleClick = () => setOpenTab((current) => !current);
 
@@ -35,8 +35,8 @@ const MobileMenu = ({
         <div className={_.inp_con}>
           <div className={_.title}>
             <h3>Track</h3>
-            {/* {openTab ? <PiCaretUpBold /> : <PiCaretDownBold />} */}
-            <PiCaretRightBold />
+             {openTab ? <PiCaretUpBold /> : <PiCaretDownBold />} 
+            {/*  <PiCaretRightBold />*/}
           </div>
 
           <div className={_.form_inp}>
