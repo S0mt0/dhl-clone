@@ -1,57 +1,44 @@
 "use client";
-import Image from "next/image";
+import { FlagIcon, FlagIconCode } from "react-flag-kit";
 import { useState } from "react";
-import {
-  PiCaretDownBold,
-  PiCaretRightBold,
-  PiCaretUpBold,
-} from "react-icons/pi";
+import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
 
 import MobileMenuNav from "./mobileMenuNav";
 import TrackFormInput from "../../shared/TrackFormInput";
 
-import _ from "../../../styles/header.module.scss";
 import Link from "next/link";
+import _ from "../../../styles/header.module.scss";
 
 const MobileMenu = ({
   menuIsOpen,
   toggleMenu,
   country,
-  countryFlagImgUrl,
+  countryISOCode,
 }: {
   toggleMenu: () => void;
   menuIsOpen: boolean;
   country: string;
-  countryFlagImgUrl?: string;
+  countryISOCode?: string;
 }) => {
- // const [openTab, setOpenTab] = useState<boolean>(true);
-
-  //const handleClick = () => setOpenTab((current) => !current);
+  const [openTab, setOpenTab] = useState<boolean>(false);
+  const handleClick = () => setOpenTab((current) => !current);
 
   return (
     <div className={_.mobile_menu_con}>
       <MobileMenuNav toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
       <div className={_.menu_con}>
         <div className={_.inp_con}>
-          <div className={_.title}>
+          <div className={_.title} onClick={handleClick}>
             <h3>Track</h3>
-            {/*{openTab ? <PiCaretUpBold /> : <PiCaretDownBold />} */}
-             <PiCaretRightBold />
+            {openTab ? <PiCaretUpBold /> : <PiCaretDownBold />}
           </div>
 
-           <div className={_.form_inp}>
-            <h3>Track your shipment</h3>
-            <TrackFormInput toggleMenu={toggleMenu} />
-          </div>
-           
-
-          {/*  {openTab && (
+          {openTab && (
             <div className={_.form_inp}>
               <h3>Track your shipment</h3>
               <TrackFormInput toggleMenu={toggleMenu} />
             </div>
-          )} */}
-          
+          )}
         </div>
 
         {/*  */}
@@ -70,15 +57,10 @@ const MobileMenu = ({
         {/*  */}
         {country && (
           <div className={_.country}>
-            {countryFlagImgUrl && (
-              <Image
-                alt="flag"
-                width={20}
-                height={20}
-                src={countryFlagImgUrl}
-              />
+            {countryISOCode && (
+              <FlagIcon code={countryISOCode as FlagIconCode} size={14} />
             )}
-            {country}
+            {country}&nbsp;({countryISOCode})
           </div>
         )}
 

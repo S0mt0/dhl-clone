@@ -19,6 +19,7 @@ import _ from "../../../styles/header.module.scss";
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [country, setCountry] = useState("");
+  const [countryISOCode, setCountryISOCode] = useState("");
 
   const toggleMenu = () => {
     setMenuIsOpen((current) => !current);
@@ -39,7 +40,8 @@ const Header = () => {
       try {
         const { data } = await axios.get(" https://ipapi.co/json/");
 
-        isMounted && setCountry(data.country_name);
+        isMounted && setCountry(data?.country_name);
+        isMounted && setCountryISOCode(data?.country);
       } catch (error: any) {
         console.error(error?.message);
       }
@@ -78,7 +80,6 @@ const Header = () => {
             <li>
               <a>
                 <BsGlobe2 />
-                {/* <span>Nigeria</span> */}
                 <span>{country}</span>
               </a>
             </li>
@@ -126,6 +127,7 @@ const Header = () => {
           toggleMenu={toggleMenu}
           menuIsOpen={menuIsOpen}
           country={country}
+          countryISOCode={countryISOCode}
         />
       )}
     </>

@@ -12,6 +12,7 @@
   padding: 1.5rem 1rem;
   margin-bottom: 2rem;
   background-color: #dd1923;
+  border-radius: 0.5rem 0.5rem 0 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   > h3 {
@@ -42,8 +43,18 @@
   @include responsive("small") {
     padding-bottom: 1rem;
     justify-content: space-between;
-    h3 {
-      font-size: 1rem;
+    > h3 {
+      font-size: 0.95rem;
+    }
+
+    .overview {
+      p {
+        font-size: 0.8rem;
+
+        strong {
+          font-size: 0.78rem;
+        }
+      }
     }
   }
 }
@@ -97,9 +108,14 @@
           border: none;
           outline: none;
           border-radius: 8px;
-            -webkit-appearance: none;
-  appearance: none;
-          background-color:#fff;
+          -webkit-appearance: none;
+          appearance: none;
+        }
+
+        select {
+          position: relative;
+          background-color: #fff !important;
+          color: #525252 !important;
         }
       }
 
@@ -111,10 +127,6 @@
         > p {
           flex: 1;
         }
-
-        // @include responsive("other") {
-        //   flex-direction: column;
-        // }
       }
 
       .cardT {

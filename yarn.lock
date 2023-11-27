@@ -525,6 +525,11 @@ countries-list@^3.0.6:
   resolved "https://registry.yarnpkg.com/countries-list/-/countries-list-3.0.6.tgz#eae61674539c2818e282be7b46d0645d96ae5606"
   integrity sha512-BCJODHTSRMIxS0W80NZw8bC7x6/WS8Tf4FdtFrEbW0FONBbqTAzOrKNG06UEMgLGxOZpOJddiVEdCztKLpmPxA==
 
+country-flag-icons@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/country-flag-icons/-/country-flag-icons-1.5.9.tgz#5ee10d9c8c1dcfb031724121b2adecdf166996cd"
+  integrity sha512-9jrjv2w7kRbqNtdtMdK2j3gmDIZzd5l9L2pZiQjF9J0mUcB+NKIGDNADTDHBEp8EQtjOkCOcciJGGSOpERdXPQ==
+
 cross-spawn@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -1836,6 +1841,11 @@ react-dom@^18:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-flag-kit@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-flag-kit/-/react-flag-kit-1.1.1.tgz#368797185bd5c406b94e641eadddf96b56aba21a"
+  integrity sha512-sgelSGSl0HxSL8lMM1TEBidgiGV2hOi+GaLNKeg10aBnL07vpwKvmfILlc1SzOdVyH48NElFyMj4NQn8F+/FHw==
 
 react-icons@^4.11.0:
   version "4.11.0"
