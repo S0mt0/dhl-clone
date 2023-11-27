@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 
 import _ from "../../../styles/header.module.scss";
+import Image from "next/image";
 
 const MobileMenuNav = ({
   menuIsOpen,
@@ -23,7 +24,7 @@ const MobileMenuNav = ({
     >
       <nav>
         <Link href="/" title="DHL Logo">
-          <img src={"/dhl-logo.svg"} alt="DHL Logo" />
+          <Image src={"/dhl-logo.svg"} alt="DHL Logo" width={136} height={40} />
         </Link>
 
         <div className={_.menu_btn}>

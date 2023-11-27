@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { countries } from "countries-list";
+import { useState, useEffect } from "react";
 import { FaRegCreditCard } from "react-icons/fa";
 import Image from "next/image";
 
@@ -9,6 +10,8 @@ import { useCheckoutFormData, useGlobalProvider } from "@/sdk";
 import _ from "../styles/checkout.module.scss";
 
 const CheckoutUI = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
   const {
     shipmentStore: { shipment },
   } = useGlobalProvider();
@@ -42,6 +45,13 @@ const CheckoutUI = () => {
 
     return "Make Payment";
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
     <div className={_.container}>
       <div className={_.overview_con}>

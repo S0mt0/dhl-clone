@@ -1,12 +1,14 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useFetchShipmentFunc } from "@/sdk";
 
 import _ from "../../styles/home.module.scss";
 
 const TrackFormInput = ({ toggleMenu }: { toggleMenu?: () => void }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
   const router = useRouter();
   const query = useSearchParams().get("tracking-id")?.trim();
 
@@ -15,6 +17,14 @@ const TrackFormInput = ({ toggleMenu }: { toggleMenu?: () => void }) => {
   useEffect(() => {
     toggleMenu && toggleMenu();
   }, [toggleMenu, query]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <form

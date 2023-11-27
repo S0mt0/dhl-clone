@@ -1,6 +1,6 @@
 "use client";
 import { FlagIcon, FlagIconCode } from "react-flag-kit";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
 
 import MobileMenuNav from "./mobileMenuNav";
@@ -20,8 +20,16 @@ const MobileMenu = ({
   country: string;
   countryISOCode?: string;
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
   const [openTab, setOpenTab] = useState<boolean>(false);
   const handleClick = () => setOpenTab((current) => !current);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <div className={_.mobile_menu_con}>

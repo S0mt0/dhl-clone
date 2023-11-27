@@ -20,6 +20,7 @@ const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [country, setCountry] = useState("");
   const [countryISOCode, setCountryISOCode] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
 
   const toggleMenu = () => {
     setMenuIsOpen((current) => !current);
@@ -53,6 +54,12 @@ const Header = () => {
       isMounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
     <>
