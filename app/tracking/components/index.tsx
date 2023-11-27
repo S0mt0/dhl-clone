@@ -19,7 +19,7 @@ import Input from "./Input";
 import { faq } from "./FAQ";
 import Event from "./Event";
 import StatusEvent from "./StatusEvent";
-import FaqUI from "./FaqUI";
+// import FaqUI from "./FaqUI";
 import PrintButton from "@/app/components/shared/PrintButton";
 
 import _ from "../styles/tracking.module.scss";
@@ -29,7 +29,7 @@ const Index = () => {
   const trackingId = path.get("tracking-id")?.trim();
 
   const { fetchShipment, error, loading, shipment, success, unknownShipment } =
-    useFetchShipmentFunc(trackingId);
+    useFetchShipmentFunc();
 
   useEffect(() => {
     trackingId && fetchShipment(trackingId);
@@ -50,7 +50,7 @@ const Index = () => {
   };
 
   return (
-    <div>
+    <div className={_.tracking_con}>
       <div className={_.title}>
         <h2>{!error ? "Track: Express" : "Track & Trace"}</h2>
       </div>

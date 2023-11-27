@@ -25,7 +25,7 @@ export const footerData = [
         icon: null,
       },
       {
-        title: "DHL for Business",
+        title: "DHLimited for Business",
         icon: null,
       },
     ],
@@ -34,11 +34,11 @@ export const footerData = [
     heading: "Our Divisions",
     links: [
       {
-        title: "DHL Express",
+        title: "DHLimited Express",
         icon: null,
       },
       {
-        title: "DHL Global Forwarding",
+        title: "DHLimited Global Forwarding",
         icon: null,
       },
       {
@@ -51,7 +51,7 @@ export const footerData = [
     heading: "Company Information",
     links: [
       {
-        title: "About DHL",
+        title: "About DHLimited",
         icon: FiExternalLink,
       },
       {

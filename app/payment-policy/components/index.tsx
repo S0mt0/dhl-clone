@@ -1,11 +1,17 @@
+"use client";
 import Link from "next/link";
 
+import { useGlobalProvider } from "@/sdk";
 import { PolicyLists } from "./data";
 import PrintButton from "@/app/components/shared/PrintButton";
 
 import _ from "../style/policy.module.scss";
 
 const Index = () => {
+  const {
+    shipmentStore: { shipment },
+  } = useGlobalProvider();
+
   return (
     <div className={_.policy_con}>
       <div className={_.print}>
@@ -45,12 +51,14 @@ const Index = () => {
             procedures.
           </p>
           <br />
-          <p>
-            If your shipment has been seized, you can redeem it{" "}
-            <Link href={"/checkout"} style={{ fontWeight: "bolder" }}>
-              here.
-            </Link>
-          </p>
+          {shipment.status.status === "seized" && (
+            <p>
+              If your shipment has been seized, you can redeem it{" "}
+              <Link href={"/checkout"} style={{ fontWeight: "bolder" }}>
+                here.
+              </Link>
+            </p>
+          )}
         </div>
       </div>
     </div>

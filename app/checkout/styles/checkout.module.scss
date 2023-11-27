@@ -1,49 +1,86 @@
+@import "../../../media-query/function.scss";
+
 .container {
-  padding: 3rem;
+  padding: 5rem 1.5rem;
   background-color: #f2f2f2;
 }
 
-.checkout {
-  width: 95%;
+.overview_con {
+  width: 100%;
   max-width: 810px;
   margin: 0 auto;
-  min-height: 50vh;
-  padding: 1.5rem;
-  background-color: #fff;
-  font-size: 0.9rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #dd1923;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  > h3 {
+    border-bottom: 1px solid #d4c9c9;
+    margin-bottom: 6px;
+    padding-bottom: 2px;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+  }
 
   .overview {
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e0e0e0;
-    border-bottom: 1px solid #d40a1479;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    column-gap: 1.5rem;
     flex-wrap: wrap;
 
     p {
       line-height: 1.6;
       text-transform: capitalize;
-      width: fit-content;
-      padding: 6px 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-      border-radius: 4px;
+      color: #fff;
 
       strong {
-        color: #d40511;
-        // color: #444444c5;
         font-size: 0.875rem;
       }
     }
   }
 
-  .info {
-    margin-top: 2rem;
+  @include responsive("small") {
+    padding-bottom: 1rem;
+    justify-content: space-between;
+    h3 {
+      font-size: 1rem;
+    }
+  }
+}
+
+.checkout {
+  width: 100%;
+  max-width: 810px;
+  margin: 0 auto;
+  background-color: #fff;
+  font-size: 0.9rem;
+  border: 1px solid #d1d1d1cc;
+  border-radius: 0.7rem;
+
+  .cards {
+    padding: 1.5rem;
+    border-bottom: 1px solid #d1d1d1cc;
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    @include responsive("other") {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
     gap: 2rem;
+    padding: 1.5rem;
 
     .form {
       min-width: 200px;
@@ -71,6 +108,10 @@
         > p {
           flex: 1;
         }
+
+        // @include responsive("other") {
+        //   flex-direction: column;
+        // }
       }
 
       .cardT {
@@ -133,7 +174,7 @@
 
           &:disabled {
             cursor: not-allowed;
-            opacity: 0.5;
+            opacity: 0.7;
           }
 
           svg {
@@ -142,6 +183,10 @@
 
           &:hover {
             background-color: #eb131e;
+          }
+
+          @include responsive("small") {
+            padding: 8px 1rem;
           }
         }
       }
@@ -169,6 +214,10 @@
       .ctd {
         margin-top: 3rem;
       }
+    }
+
+    @include responsive("other") {
+      flex-direction: column;
     }
   }
 }

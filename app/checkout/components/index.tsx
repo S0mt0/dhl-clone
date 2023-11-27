@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { countries } from "countries-list";
+import { FaRegCreditCard } from "react-icons/fa";
+import Image from "next/image";
 
 import { useCheckoutFormData, useGlobalProvider } from "@/sdk";
 
@@ -21,6 +23,11 @@ const CheckoutUI = () => {
     canSubmit,
   } = useCheckoutFormData();
 
+  const currencyFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   // List of all countries
   const countriesOptions = Object.values(countries).map(
     (country) => country.name
@@ -29,31 +36,21 @@ const CheckoutUI = () => {
   const buttonText = () => {
     if (isSubmitting) {
       return "Please wait...";
-      // return <img src="/btn-spinner.svg" alt="Please wait..." />;
     } else if (success) {
-      return "Done!";
+      return "Payment successful";
     }
 
-    return "Submit";
+    return "Make Payment";
   };
-
-  const currencyFormatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-
   return (
     <div className={_.container}>
-      <div className={_.checkout}>
+      <div className={_.overview_con}>
+        <h3>Shipment Overview</h3>
         <div className={_.overview}>
           <p>
             <strong>Shipment:</strong>{" "}
             <span
-              style={
-                !shipment.trackingId
-                  ? { color: "#000000ab", fontFamily: "monospace" }
-                  : {}
-              }
+              style={!shipment.trackingId ? { fontFamily: "monospace" } : {}}
             >
               {shipment.trackingId || "Unavailable"}
             </span>
@@ -61,11 +58,7 @@ const CheckoutUI = () => {
           <p>
             <strong>Location:</strong>{" "}
             <span
-              style={
-                !shipment.trackingId
-                  ? { color: "#000000ab", fontFamily: "monospace" }
-                  : {}
-              }
+              style={!shipment.trackingId ? { fontFamily: "monospace" } : {}}
             >
               {shipment.status.location.address.addressLocality ||
                 "Unavailable"}
@@ -74,11 +67,7 @@ const CheckoutUI = () => {
           <p>
             <strong>Status:</strong>{" "}
             <span
-              style={
-                !shipment.trackingId
-                  ? { color: "#000000ab", fontFamily: "monospace" }
-                  : {}
-              }
+              style={!shipment.trackingId ? { fontFamily: "monospace" } : {}}
             >
               {shipment.trackingId ? shipment.status.status : "Unavailable"}
             </span>
@@ -87,16 +76,40 @@ const CheckoutUI = () => {
             <p>
               <strong>Fee:</strong>{" "}
               <span
-                style={
-                  !shipment.trackingId
-                    ? { color: "#000000ab", fontFamily: "monospace" }
-                    : {}
-                }
+                style={!shipment.trackingId ? { fontFamily: "monospace" } : {}}
               >
                 $ {shipment.status?.bill?.toLocaleString()}
               </span>
             </p>
           )}
+        </div>
+      </div>
+      <div className={_.checkout}>
+        <div className={_.cards}>
+          <div>
+            <FaRegCreditCard />
+            Credit or debit
+          </div>
+          <div>
+            <Image
+              src={"/discover.png"}
+              alt="Discover Brand Logo"
+              width={60}
+              height={20}
+            />
+            <Image
+              src={"/mastercard.png"}
+              alt="Mastercard Brand Logo"
+              width={60}
+              height={20}
+            />
+            <Image
+              src={"/visa.png"}
+              alt="Visa Brand Logo"
+              width={60}
+              height={20}
+            />
+          </div>
         </div>
         <div className={_.info}>
           <form className={_.form} onSubmit={(e) => handleSubmit(e)}>
@@ -180,25 +193,21 @@ const CheckoutUI = () => {
               ) : (
                 <p
                   style={
-                    !shipment.trackingId
-                      ? { color: "#000000ab", fontFamily: "monospace" }
-                      : {}
+                    !shipment.trackingId ? { fontFamily: "monospace" } : {}
                   }
                 >
                   Unavailable
                 </p>
               )}
             </div>
-            {canSubmit && (
-              <div className={_.submit}>
-                <button
-                  type="submit"
-                  disabled={isSubmitting ? isSubmitting : !canSubmit}
-                >
-                  {buttonText()}
-                </button>
-              </div>
-            )}
+            <div className={_.submit}>
+              <button
+                type="submit"
+                disabled={isSubmitting ? isSubmitting : !canSubmit}
+              >
+                {buttonText()}
+              </button>
+            </div>
           </form>
           {/*  */}
           <div className={_.disclaimer}>

@@ -58,25 +58,25 @@ const Header = () => {
         <MobileNavSticky toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
         <DesktopNavSticky />
         <nav>
-          <Link href="/" title="DHL Logo" id="#" className={_.logo}>
+          <Link href="/" title="DHL Logo" className={_.logo}>
             <img src={"/dhl-logo.svg"} alt="DHL Logo" />
           </Link>
 
           <ul>
             <li>
-              <a href="#">
+              <a>
                 <span>Find a Location</span>
                 <FiExternalLink />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a>
                 <FiSearch />
                 <span>Search</span>
               </a>
             </li>
             <li>
-              <a href="#">
+              <a>
                 <BsGlobe2 />
                 {/* <span>Nigeria</span> */}
                 <span>{country}</span>
@@ -97,24 +97,24 @@ const Header = () => {
         <div className={_.sub_nav}>
           <ul>
             <li>
-              <a href="#">
+              <a>
                 <span>Track</span>
                 <BsChevronDown />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a>
                 <span>Track</span>
                 <BsChevronDown />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a>
                 <span>Customer Service</span>
               </a>
             </li>
           </ul>
-          <a href="#">
+          <a>
             <span>Customer Portal Logins</span>
             <BsChevronDown />
           </a>

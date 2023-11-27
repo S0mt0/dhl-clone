@@ -12,7 +12,7 @@ const Footer = () => {
               <h3>{data.heading}</h3>
               {data.links.map((link, i) => (
                 <li key={i}>
-                  <a href="#">
+                  <a>
                     <span>{link.title}</span>
                     {typeof link.icon === "function" && <link.icon />}
                   </a>

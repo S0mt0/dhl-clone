@@ -3,8 +3,8 @@
     @media (max-width: 768px) {
       @content;
     }
-  } @else if($breakpoint ==portrait) {
-    @media (orientation: portrait) and (max-width: 774px) {
+  } @else if($breakpoint ==other) {
+    @media (max-width: 620px) {
       @content;
     }
   } @else if($breakpoint ==portrait-large) {

@@ -1,71 +1,28 @@
+@import "../../../media-query/function.scss";
+
+.tracking_con {
+  > div {
+    padding-inline: 1.5rem;
+  }
+}
+
 .title {
   margin-block: 2.5rem 1.7rem;
   background-color: #ffff;
 
   h2 {
     text-align: center;
-    padding-inline: 1rem;
     font-weight: 300;
     font-size: 2.6rem;
     text-transform: uppercase;
     font-family: "Barlow", sans-serif;
-  }
-}
 
-.form {
-  width: 100%;
-  background: #ffff;
-  padding: 2px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  height: 3.5rem;
-  position: relative;
-  border: 1px solid #1d1d1d8a;
-  height: 3.3rem;
-
-  p {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: grey;
-    font-size: 0.95em;
-    pointer-events: none;
-  }
-
-  input {
-    flex: 0.81;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding-inline: 15px;
-    font-size: 1rem;
-    position: relative;
-
-    &::placeholder {
-      color: grey;
-      font-size: 0.95em;
+    @include responsive("mobile") {
+      font-size: 2rem;
     }
-  }
 
-  button {
-    flex: 0.2;
-    height: 100%;
-    outline: none;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    background: #d40511;
-    color: #ffff;
-    text-transform: capitalize;
-    cursor: pointer;
-    transition: background 200ms;
-    font-weight: 800;
-    font-size: 0.85rem;
-
-    &:hover {
-      background: #e40712;
+    @include responsive("small") {
+      font-size: 1.5rem;
     }
   }
 }
@@ -76,9 +33,88 @@
   padding: 1.8rem 1.5rem;
 
   .search {
-    width: 80%;
-    max-width: 540px;
+    width: 100%;
+    max-width: 585px;
     margin: 0 auto;
+
+    .form {
+      width: 100%;
+      background: #ffff;
+      padding: 2px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      height: 3.5rem;
+      position: relative;
+      border: 1px solid #1d1d1d8a;
+      height: 3.3rem;
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: grey;
+        font-size: 0.95em;
+        pointer-events: none;
+      }
+
+      input {
+        flex: 0.81;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding-inline: 15px;
+        font-size: 1rem;
+        position: relative;
+
+        &::placeholder {
+          color: grey;
+          font-size: 0.95em;
+        }
+      }
+
+      button {
+        flex: 0.2;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        background: #d40511;
+        color: #ffff;
+        text-transform: capitalize;
+        cursor: pointer;
+        transition: background 200ms;
+        font-weight: 800;
+        font-size: 0.85rem;
+
+        &:hover {
+          background: #e40712;
+        }
+      }
+
+      @include responsive("mobile") {
+        flex-direction: column;
+        height: 6rem;
+        align-items: flex-start;
+
+        button {
+          flex: 1;
+          display: inline-block;
+          width: 100%;
+          border-radius: 0 0 4px 4px;
+        }
+        input {
+          flex: 1;
+          width: 100%;
+        }
+      }
+    }
+
+    @include responsive("mobile") {
+      max-width: 100%;
+    }
   }
 
   .loader {
@@ -103,11 +139,17 @@
       &:last-of-type {
         border-bottom: none;
       }
+
+      @include responsive("small") {
+        padding: 1rem;
+      }
     }
 
     .overview {
       display: flex;
       justify-content: space-between;
+      flex-direction: row;
+      gap: 1.5rem 1rem;
 
       p {
         font-size: 0.8rem;
@@ -120,6 +162,14 @@
           span {
             font-weight: 600;
           }
+        }
+      }
+
+      @include responsive("mobile") {
+        flex-direction: column;
+
+        button {
+          width: fit-content;
         }
       }
     }
@@ -163,6 +213,10 @@
 
           p {
             font-size: 0.8rem;
+          }
+
+          @include responsive("mobile") {
+            flex-direction: column;
           }
         }
 
@@ -329,6 +383,16 @@
           font-size: 0.8rem;
         }
       }
+
+      @include responsive("small") {
+        gap: 1rem;
+
+        .info {
+          svg {
+            font-size: 1.3rem;
+          }
+        }
+      }
     }
   }
 }
@@ -355,6 +419,24 @@
     font-family: "Hind", sans-serif;
     font-size: 1.7rem;
     font-weight: 700;
+  }
+
+  @include responsive("mobile") {
+    p {
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+  @include responsive("small") {
+    h2 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.85rem;
+    }
   }
 }
 
@@ -402,6 +484,18 @@
       line-height: 1.5;
       font-family: "Hind", sans-serif;
       color: #000000da;
+    }
+
+    @include responsive("small") {
+      h3 {
+        font-size: 0.8rem;
+        line-height: 1.3;
+      }
+
+      p {
+        font-size: 0.8rem;
+        margin-block: 2rem;
+      }
     }
   }
 }

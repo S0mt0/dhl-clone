@@ -42,19 +42,19 @@ const DesktopNavSticky = () => {
 
           <ul>
             <li>
-              <a href="#">
+              <a>
                 <span>Track</span>
                 <BsChevronDown />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a>
                 <span>Track</span>
                 <BsChevronDown />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a>
                 <span>Customer Service</span>
               </a>
             </li>

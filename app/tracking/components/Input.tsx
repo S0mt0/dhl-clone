@@ -1,14 +1,18 @@
 "use client";
 
 import { FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { useFetchShipmentFunc } from "@/sdk";
 
 import _ from "../styles/tracking.module.scss";
 
 const Input = () => {
+  const path = useSearchParams();
+  const trackingId = path.get("tracking-id")?.trim();
+
   const { fetchShipment, handleInputChange, trackingNumber } =
-    useFetchShipmentFunc();
+    useFetchShipmentFunc(trackingId);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
