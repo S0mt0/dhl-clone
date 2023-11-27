@@ -1,7 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
+import {
+  PiCaretDownBold,
+  PiCaretRightBold,
+  PiCaretUpBold,
+} from "react-icons/pi";
 
 import MobileMenuNav from "./mobileMenuNav";
 import TrackFormInput from "../../shared/TrackFormInput";
@@ -29,17 +33,23 @@ const MobileMenu = ({
       <MobileMenuNav toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
       <div className={_.menu_con}>
         <div className={_.inp_con}>
-          <div className={_.title} onClick={handleClick}>
+          <div className={_.title}>
             <h3>Track</h3>
-            {openTab ? <PiCaretUpBold /> : <PiCaretDownBold />}
+            {/* {openTab ? <PiCaretUpBold /> : <PiCaretDownBold />} */}
+            <PiCaretRightBold />
           </div>
 
-          {openTab && (
+          <div className={_.form_inp}>
+            <h3>Track your shipment</h3>
+            <TrackFormInput toggleMenu={toggleMenu} />
+          </div>
+
+          {/* {openTab && (
             <div className={_.form_inp}>
               <h3>Track your shipment</h3>
               <TrackFormInput toggleMenu={toggleMenu} />
             </div>
-          )}
+          )} */}
         </div>
 
         {/*  */}
