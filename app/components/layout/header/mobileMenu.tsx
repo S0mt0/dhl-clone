@@ -22,19 +22,14 @@ const MobileMenu = ({
 }) => {
   const [openTab, setOpenTab] = useState<boolean>(false);
 
+  const handleClick = () => setOpenTab((current) => !current);
+
   return (
     <div className={_.mobile_menu_con}>
       <MobileMenuNav toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
       <div className={_.menu_con}>
-        {/*  */}
         <div className={_.inp_con}>
-          <div
-            className={_.title}
-            onClick={() => {
-              setOpenTab((current) => !current);
-            }}
-            // style={{ color: openTab ? "#d40511" : "initial" }}
-          >
+          <div className={_.title} onClick={handleClick}>
             <h3>Track</h3>
             {openTab ? <PiCaretUpBold /> : <PiCaretDownBold />}
           </div>
