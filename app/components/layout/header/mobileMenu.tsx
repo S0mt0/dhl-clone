@@ -26,7 +26,7 @@ const MobileMenu = ({
 }) => {
  // const [openTab, setOpenTab] = useState<boolean>(true);
 
-  const handleClick = () => setOpenTab((current) => !current);
+  //const handleClick = () => setOpenTab((current) => !current);
 
   return (
     <div className={_.mobile_menu_con}>
