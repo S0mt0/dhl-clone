@@ -25,7 +25,7 @@ const MobileMenuNav = () => {
     >
       <nav>
         <Link href="/" title="DHL Logo" onClick={closeMenu}>
-          <Image src={"/dhl-logo.svg"} alt="DHL Logo" width={136} height={40} />
+          <img src={"/dhl-logo.svg"} alt="DHL Logo" />
         </Link>
 
         <MobileMenuButton />

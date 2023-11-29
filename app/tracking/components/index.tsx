@@ -19,7 +19,6 @@ import Input from "./Input";
 import { faq } from "./FAQ";
 import Event from "./Event";
 import StatusEvent from "./StatusEvent";
-// import FaqUI from "./FaqUI";
 import PrintButton from "@/app/components/shared/PrintButton";
 
 import _ from "../styles/tracking.module.scss";
@@ -90,6 +89,38 @@ const Index = () => {
               >
                 {shipment.status.status}
               </h2>
+
+              <p>
+                {moment(shipment.status.timestamp).format("LL")}{" "}
+                {formatLocalTime(shipment.status.timestamp)}, Service Area:{" "}
+                <span style={{ textTransform: "uppercase" }}>
+                  {shipment.destination.address.addressLocality}
+                </span>
+              </p>
+
+              <div>
+                <strong>
+                  Origin Service Area:{" "}
+                  <span style={{ textTransform: "uppercase" }}>
+                    {shipment.origin.address.addressLocality}
+                  </span>
+                </strong>
+              </div>
+
+              <div className={_.prog_bar_grid}>
+                <div />
+                <div />
+                <div />
+              </div>
+
+              <div style={{ textAlign: "right" }}>
+                <strong>
+                  Destination Service Area:{" "}
+                  <span style={{ textTransform: "uppercase" }}>
+                    {shipment.destination.address.addressLocality}
+                  </span>
+                </strong>
+              </div>
             </div>
             {/* - */}
             {/* - */}
@@ -208,7 +239,6 @@ const Index = () => {
               </h3>
               {activeQA === i && <p>{data.a}</p>}
             </div>
-            // <FaqUI data={data} i={i} key={i} />
           ))}
         </div>
       )}
@@ -225,7 +255,6 @@ const Index = () => {
               </h3>
               {activeQA === i && <p>{data.a}</p>}
             </div>
-            // <FaqUI data={data} i={i} key={i} />
           ))}
         </div>
       )}
