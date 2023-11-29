@@ -17,20 +17,19 @@ const TrackFormInput = () => {
     mobileMenuStore: { closeMenu },
   } = useGlobalProvider();
 
-  useEffect(()=>{
-    closeMenu()
-    
-  },[pathname])
+
+  const toggleMenu = ()=>{
+   if(pathname.includes(’tracking’) {
+     closeMenu()
+   }
+  }
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         router.push(`/tracking?tracking-id=${trackingNumber.trim()}`);
-        //setTimeout(() => {
-         // closeMenu();
-       // });
-        query?.trim() === trackingNumber.trim() && closeMenu()
+        toggleMenu()
       }}
       className={_.form}
     >
