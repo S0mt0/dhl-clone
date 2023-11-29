@@ -9,6 +9,7 @@ import _ from "../../styles/home.module.scss";
 const TrackFormInput = () => {
   const router = useRouter();
   const query = useSearchParams().get("tracking-id")?.trim();
+  const pathname = usePathname()
 
   const { handleInputChange, trackingNumber } = useFetchShipmentFunc(query);
 
