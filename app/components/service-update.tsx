@@ -46,7 +46,7 @@ const ServiceUpdate = () => {
               ></Image>
             </div>
             <div className={_.msg}>
-              <h3>Ukrain Situation Update</h3>
+              <h3>Ukraine Situation Update</h3>
               <p>Read more</p>
             </div>
             <div className={_.icon_small}>

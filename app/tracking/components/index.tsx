@@ -61,151 +61,153 @@ const Index = () => {
             <img src="/loader.svg" alt="please wait..." />
           </div>
         ) : (
-          <div className={_.shipment_details_con}>
-            {/*  */}
-            <div className={_.overview}>
-              <div>
-                <p> Tracking Code: {shipment.trackingId}</p>
-                <p>
-                  This shipment is handled by: <span>DHLimited Express</span>
-                </p>
-              </div>
-              <PrintButton />
-            </div>
-            {/* - */}
-            {/* - */}
-            <div className={_.summary}>
-              <h2
-                style={{
-                  color:
-                    shipment.status.status === "delivered"
-                      ? "#67A31D"
-                      : shipment.status.status === "pending"
-                      ? "#6b6b6b"
-                      : shipment.status.status === "shipping"
-                      ? "#aaaaaa"
-                      : "#d40511",
-                }}
-              >
-                {shipment.status.status}
-              </h2>
-
-              <p>
-                {moment(shipment.status.timestamp).format("LL")}{" "}
-                {formatLocalTime(shipment.status.timestamp)}, Service Area:{" "}
-                <span style={{ textTransform: "uppercase" }}>
-                  {shipment.destination.address.addressLocality}
-                </span>
-              </p>
-
-              <div>
-                <strong>
-                  Origin Service Area:{" "}
-                  <span style={{ textTransform: "uppercase" }}>
-                    {shipment.origin.address.addressLocality}
-                  </span>
-                </strong>
-              </div>
-
-              <div className={_.prog_bar_grid}>
-                <div />
-                <div />
-                <div />
-              </div>
-
-              <div style={{ textAlign: "right" }}>
-                <strong>
-                  Destination Service Area:{" "}
-                  <span style={{ textTransform: "uppercase" }}>
-                    {shipment.destination.address.addressLocality}
-                  </span>
-                </strong>
-              </div>
-            </div>
-            {/* - */}
-            {/* - */}
-            {success && shipment.trackingId && (
-              <div className={_.more_shipment_details}>
-                <h3 onClick={() => toggleTab("a")}>
-                  <span>More Shipment Details</span>
-                  <span className={_.chevron}>
-                    {activeTab.a ? <PiCaretUpBold /> : <PiCaretDownBold />}
-                  </span>
-                </h3>
-                {activeTab.a && (
-                  <div className={_.more_details}>
-                    <div className={_.title}>
-                      <p className={_.col1}>
-                        {shipment.status.status === "delivered"
-                          ? "Delivery"
-                          : shipment.status.status === "seized"
-                          ? "Seizure"
-                          : "Status"}{" "}
-                        Date / Time
-                      </p>
-                      <p className={_.col2}>
-                        {moment(shipment.status.timestamp).format(
-                          "MMMM D, YYYY"
-                        )}{" "}
-                        {formatLocalTime(shipment.status.timestamp)}
+          <>
+            <div className={_.shipment_details_con}>
+              {success && shipment.trackingId ? (
+                <>
+                  {/*  */}
+                  <div className={_.overview}>
+                    <div>
+                      <p> Tracking Code: {shipment.trackingId}</p>
+                      <p>
+                        This shipment is handled by:{" "}
+                        <span>DHLimited Express</span>
                       </p>
                     </div>
-                    {/*  */}
-                    <div className={_.row}>
-                      <p className={_.col1}>
-                        To protect your privacy, more delivery details are
-                        available after validation
-                      </p>
-                      {shipment.status.status === "seized" && (
-                        <p className={_.col2}>
-                          <Link href={"/checkout"}>
-                            <span>Redeem Shipment</span> <PiNewspaperFill />
-                          </Link>
-                        </p>
-                      )}
+                    <PrintButton />
+                  </div>
+                  {/* - */}
+                  <div className={_.summary}>
+                    <h2
+                    // style={{
+                    //   color:
+                    //     shipment.status.status === "delivered"
+                    //       ? "#67A31D"
+                    //       : shipment.status.status === "pending"
+                    //       ? "#6b6b6b"
+                    //       : shipment.status.status === "shipping"
+                    //       ? "#aaaaaa"
+                    //       : "#d40511",
+                    // }}
+                    >
+                      {shipment.status.status}
+                    </h2>
+
+                    <p>
+                      {moment(shipment.status.timestamp).format("LL")}{" "}
+                      {formatLocalTime(shipment.status.timestamp)}, Service
+                      Area:{" "}
+                      <span style={{ textTransform: "uppercase" }}>
+                        {shipment.destination.address.addressLocality}
+                      </span>
+                    </p>
+
+                    <div>
+                      <strong>
+                        Origin Service Area:{" "}
+                        <span style={{ textTransform: "uppercase" }}>
+                          {shipment.origin.address.addressLocality}
+                        </span>
+                      </strong>
+                    </div>
+
+                    <div className={_.prog_bar_grid}>
+                      <div />
+                      <div />
+                      <div />
+                    </div>
+
+                    <div style={{ textAlign: "right" }}>
+                      <strong>
+                        Destination Service Area:{" "}
+                        <span style={{ textTransform: "uppercase" }}>
+                          {shipment.destination.address.addressLocality}
+                        </span>
+                      </strong>
                     </div>
                   </div>
-                )}
-              </div>
-            )}
-            {/* - */}
-            {/* - */}
-            {success && shipment.trackingId && (
-              <div className={_.all_shipment_updates}>
-                <h3 onClick={() => toggleTab("b")}>
-                  <span>All Shipment Updates</span>
-                  <span className={_.chevron}>
-                    {activeTab.b ? <PiCaretUpBold /> : <PiCaretDownBold />}
-                  </span>
-                </h3>
-                {activeTab.b && (
-                  <div className={_.all_events_con}>
-                    <StatusEvent status={shipment.status} />
-                    {shipment?.events?.length &&
-                      shipment.events.map((event, i) => {
-                        return <Event event={event} key={i} />;
-                      })}
+                  {/* - */}
+                  <div className={_.more_shipment_details}>
+                    <h3 onClick={() => toggleTab("a")}>
+                      <span>More Shipment Details</span>
+                      <span className={_.chevron}>
+                        {activeTab.a ? <PiCaretUpBold /> : <PiCaretDownBold />}
+                      </span>
+                    </h3>
+                    {activeTab.a && (
+                      <div className={_.more_details}>
+                        <div className={_.title}>
+                          <p className={_.col1}>
+                            {shipment.status.status === "delivered"
+                              ? "Delivery"
+                              : shipment.status.status === "seized"
+                              ? "Seizure"
+                              : "Status"}{" "}
+                            Date / Time
+                          </p>
+                          <p className={_.col2}>
+                            {moment(shipment.status.timestamp).format(
+                              "MMMM D, YYYY"
+                            )}{" "}
+                            {formatLocalTime(shipment.status.timestamp)}
+                          </p>
+                        </div>
+                        {/*  */}
+                        <div className={_.row}>
+                          <p className={_.col1}>
+                            To protect your privacy, more delivery details are
+                            available after validation
+                          </p>
+                          {shipment.status.status === "seized" && (
+                            <p className={_.col2}>
+                              <Link href={"/checkout"}>
+                                <span>Redeem Shipment</span> <PiNewspaperFill />
+                              </Link>
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            )}
-            {/* - */}
-            {/* - */}
-            {error && (
-              <div className={_.not_found}>
-                <div className={_.info}>
-                  <VscInfo />
+                  {/* - */}
+                  <div className={_.all_shipment_updates}>
+                    <h3 onClick={() => toggleTab("b")}>
+                      <span>All Shipment Updates</span>
+                      <span className={_.chevron}>
+                        {activeTab.b ? <PiCaretUpBold /> : <PiCaretDownBold />}
+                      </span>
+                    </h3>
+                    {activeTab.b && (
+                      <div className={_.all_events_con}>
+                        <StatusEvent status={shipment.status} />
+                        {shipment?.events?.length &&
+                          shipment.events.map((event, i) => {
+                            return <Event event={event} key={i} />;
+                          })}
+                      </div>
+                    )}
+                  </div>
+                </>
+              ) : null}
+
+              {/* - */}
+              {/* - */}
+              {error && (
+                <div className={_.not_found}>
+                  <div className={_.info}>
+                    <VscInfo />
+                  </div>
+                  <div className={_.info_message}>
+                    <h4>{unknownShipment}</h4>
+                    <p>
+                      Sorry, your tracking attempt was not successful. Please
+                      check your tracking number.
+                    </p>
+                  </div>
                 </div>
-                <div className={_.info_message}>
-                  <h4>{unknownShipment}</h4>
-                  <p>
-                    Sorry, your tracking attempt was not successful. Please
-                    check your tracking number.
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          </>
         )}
       </div>
 
