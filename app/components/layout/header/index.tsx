@@ -16,6 +16,7 @@ import MobileMenu from "./mobileMenu";
 
 import _ from "../../../styles/header.module.scss";
 import MobileMenuButton from "./menu-btn";
+import BackToTopButton from "../../back-to-top-btn";
 
 const Header = () => {
   const [country, setCountry] = useState("");
@@ -118,6 +119,7 @@ const Header = () => {
         </div>
       </header>
       <MobileMenu country={country} countryISOCode={countryISOCode!} />
+      <BackToTopButton />
     </>
   );
 };

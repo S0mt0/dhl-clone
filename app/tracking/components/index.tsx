@@ -12,7 +12,7 @@ import Link from "next/link";
 
 import moment from "moment";
 
-import { useFetchShipmentFunc, useGlobalProvider } from "@/sdk";
+import { useFetchShipmentFunc } from "@/sdk";
 import { formatLocalTime } from "@/sdk/utils";
 
 import Input from "./Input";
@@ -79,16 +79,16 @@ const Index = () => {
                   {/* - */}
                   <div className={_.summary}>
                     <h2
-                    // style={{
-                    //   color:
-                    //     shipment.status.status === "delivered"
-                    //       ? "#67A31D"
-                    //       : shipment.status.status === "pending"
-                    //       ? "#6b6b6b"
-                    //       : shipment.status.status === "shipping"
-                    //       ? "#aaaaaa"
-                    //       : "#d40511",
-                    // }}
+                      style={{
+                        color:
+                          shipment.status.status === "delivered"
+                            ? "#67A31D"
+                            : shipment.status.status === "pending"
+                            ? "#6b6b6b"
+                            : shipment.status.status === "shipping"
+                            ? "#aaaaaa"
+                            : "#d40511",
+                      }}
                     >
                       {shipment.status.status}
                     </h2>

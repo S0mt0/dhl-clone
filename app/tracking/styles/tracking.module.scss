@@ -210,6 +210,12 @@
         margin-bottom: 1.8rem;
       }
 
+      strong {
+        @include responsive("small") {
+          font-size: 0.7rem;
+        }
+      }
+
       h3 {
         font-size: 0.9rem;
         font-weight: 800;
@@ -279,7 +285,7 @@
     .all_shipment_updates,
     .more_shipment_details {
       > h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
