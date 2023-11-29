@@ -1,5 +1,5 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 import { useFetchShipmentFunc, useGlobalProvider } from "@/sdk";
@@ -16,14 +16,20 @@ const TrackFormInput = () => {
     mobileMenuStore: { closeMenu },
   } = useGlobalProvider();
 
+  useEffect(()=>{
+    closeMenu()
+    
+  },[pathname])
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         router.push(`/tracking?tracking-id=${trackingNumber.trim()}`);
-        setTimeout(() => {
-          closeMenu();
-        });
+        //setTimeout(() => {
+         // closeMenu();
+       // });
+        query?.trim() === trackingNumber.trim() && closeMenu()
       }}
       className={_.form}
     >
