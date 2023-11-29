@@ -15,12 +15,6 @@ const GlobalPovider = ({ children }: { children: ReactNode | ReactNode[] }) => {
   const closeMenu = () => setIsMobileMenuOpen(false);
   const openMenu = () => setIsMobileMenuOpen(true);
 
-  // openMenu();
-
-  useEffect(() => {
-    console.log(isMobileMenuOpen);
-  }, [isMobileMenuOpen]);
-
   const value: TGlobalContext = {
     shipmentStore: {
       ...shipment,

@@ -1,8 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 
-import { useFetchShipmentFunc, useGlobalProvider } from "@/sdk";
+import { useFetchShipmentFunc } from "@/sdk";
 
 import _ from "../../styles/home.module.scss";
 
@@ -12,17 +11,11 @@ const TrackFormInput = () => {
 
   const { handleInputChange, trackingNumber } = useFetchShipmentFunc(query);
 
-  const {
-    mobileMenuStore: { closeMenu },
-  } = useGlobalProvider();
-
-
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         router.push(`/tracking?tracking-id=${trackingNumber.trim()}`);
-        closeMenu()
       }}
       className={_.form}
     >

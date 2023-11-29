@@ -12,7 +12,7 @@ import Link from "next/link";
 
 import moment from "moment";
 
-import { useFetchShipmentFunc } from "@/sdk";
+import { useFetchShipmentFunc, useGlobalProvider } from "@/sdk";
 import { formatLocalTime } from "@/sdk/utils";
 
 import Input from "./Input";
@@ -25,8 +25,7 @@ import PrintButton from "@/app/components/shared/PrintButton";
 import _ from "../styles/tracking.module.scss";
 
 const Index = () => {
-  const path = useSearchParams();
-  const trackingId = path.get("tracking-id")?.trim();
+  const trackingId = useSearchParams().get("tracking-id")?.trim();
 
   const { fetchShipment, error, loading, shipment, success, unknownShipment } =
     useFetchShipmentFunc();

@@ -22,6 +22,7 @@ export const useFetchShipmentFunc = (query?: string) => {
       actions: { shipDispatch },
       shipment,
     },
+    mobileMenuStore: { closeMenu },
   } = useGlobalProvider();
 
   useEffect(() => {
@@ -54,7 +55,6 @@ export const useFetchShipmentFunc = (query?: string) => {
       }
     } catch (error: any) {
       console.log(error?.message);
-      // console.log(error?.response?.data?.trackingId);
 
       shipDispatch({
         type: ShipmentActions.SET_UNKNOWN_SHIPMENT,
@@ -67,6 +67,8 @@ export const useFetchShipmentFunc = (query?: string) => {
       });
 
       shipDispatch({ type: ShipmentActions.SET_ERROR });
+    } finally {
+      closeMenu();
     }
   };
 

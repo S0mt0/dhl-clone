@@ -2,9 +2,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { GiHamburgerMenu } from "react-icons/gi";
-import { MdClose } from "react-icons/md";
-
 import { useGlobalProvider } from "@/sdk";
 
 import _ from "../../../styles/header.module.scss";
@@ -28,6 +25,10 @@ const MobileNavSticky = () => {
     };
   });
 
+  const {
+    mobileMenuStore: { closeMenu },
+  } = useGlobalProvider();
+
   return (
     <header
       className={`${_.mobile_menu_sticky}`}
@@ -37,7 +38,7 @@ const MobileNavSticky = () => {
       }}
     >
       <nav>
-        <Link href="/" title="DHL Logo">
+        <Link href="/" title="DHL Logo" onClick={closeMenu}>
           <img src={"/dhl-logo.svg"} alt="DHL Logo" />
         </Link>
 

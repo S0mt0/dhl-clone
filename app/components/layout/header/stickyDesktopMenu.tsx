@@ -4,9 +4,11 @@ import Link from "next/link";
 
 import { FaUserTie } from "react-icons/fa";
 
-import _ from "../../../styles/header.module.scss";
 import { BsChevronDown } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
+import { useGlobalProvider } from "@/sdk";
+
+import _ from "../../../styles/header.module.scss";
 
 const DesktopNavSticky = () => {
   const [showStickyNav, setShowStickyNav] = useState(false);
@@ -26,6 +28,10 @@ const DesktopNavSticky = () => {
     };
   });
 
+  const {
+    mobileMenuStore: { closeMenu },
+  } = useGlobalProvider();
+
   return (
     <header
       className={`${_.desktop_menu_sticky}`}
@@ -36,7 +42,7 @@ const DesktopNavSticky = () => {
     >
       <nav>
         <div>
-          <Link href="/" title="DHL Logo">
+          <Link href="/" title="DHL Logo" onClick={closeMenu}>
             <img src={"/dhl-logo.svg"} alt="DHL Logo" />
           </Link>
 
