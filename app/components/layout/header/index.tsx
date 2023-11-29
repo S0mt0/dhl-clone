@@ -6,6 +6,7 @@ import { FiExternalLink, FiSearch } from "react-icons/fi";
 import { BsChevronDown, BsGlobe2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
+import { FlagIconCode } from "react-flag-kit";
 
 import axios from "axios";
 
@@ -19,8 +20,9 @@ import _ from "../../../styles/header.module.scss";
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [country, setCountry] = useState("");
-  const [countryISOCode, setCountryISOCode] = useState("");
-  const [isMounted, setIsMounted] = useState(false);
+  const [countryISOCode, setCountryISOCode] = useState<FlagIconCode | null>(
+    null
+  );
 
   const toggleMenu = () => {
     setMenuIsOpen((current) => !current);
@@ -54,12 +56,6 @@ const Header = () => {
       isMounted = false;
     };
   }, []);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
 
   return (
     <>
@@ -134,7 +130,7 @@ const Header = () => {
           toggleMenu={toggleMenu}
           menuIsOpen={menuIsOpen}
           country={country}
-          countryISOCode={countryISOCode}
+          countryISOCode={countryISOCode!}
         />
       )}
     </>

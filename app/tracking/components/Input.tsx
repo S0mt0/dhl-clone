@@ -27,6 +27,8 @@ const Input = () => {
         autoComplete="on"
         value={trackingNumber}
         onChange={(e) => handleInputChange(e.target.value)}
+        name="tracking-number"
+        id="tracking-number"
       />
       <button type="submit" disabled={!trackingNumber?.trim()}>
         track

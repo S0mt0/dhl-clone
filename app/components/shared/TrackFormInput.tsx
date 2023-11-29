@@ -40,6 +40,8 @@ const TrackFormInput = ({ toggleMenu }: { toggleMenu?: () => void }) => {
         placeholder="Enter your tracking number(s)"
         value={trackingNumber}
         onChange={(e) => handleInputChange(e.target.value)}
+        name="tracking-number"
+        id="tracking-number"
         autoComplete="on"
       />
       <button type="submit" disabled={!trackingNumber.trim()}>

@@ -1,6 +1,6 @@
 "use client";
-import { FlagIcon, FlagIconCode } from "react-flag-kit";
-import { useState, useEffect } from "react";
+import { FlagIcon, type FlagIconCode } from "react-flag-kit";
+import { useState } from "react";
 import { PiCaretDownBold, PiCaretUpBold } from "react-icons/pi";
 
 import MobileMenuNav from "./mobileMenuNav";
@@ -18,18 +18,10 @@ const MobileMenu = ({
   toggleMenu: () => void;
   menuIsOpen: boolean;
   country: string;
-  countryISOCode?: string;
+  countryISOCode?: FlagIconCode;
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
   const [openTab, setOpenTab] = useState<boolean>(false);
   const handleClick = () => setOpenTab((current) => !current);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
 
   return (
     <div className={_.mobile_menu_con}>
@@ -44,7 +36,7 @@ const MobileMenu = ({
           {openTab && (
             <div className={_.form_inp}>
               <h3>Track your shipment</h3>
-              <TrackFormInput toggleMenu={toggleMenu} />
+              {/* <TrackFormInput toggleMenu={toggleMenu} /> */}
             </div>
           )}
         </div>
@@ -65,9 +57,7 @@ const MobileMenu = ({
         {/*  */}
         {country && (
           <div className={_.country}>
-            {countryISOCode && (
-              <FlagIcon code={countryISOCode as FlagIconCode} size={14} />
-            )}
+            {countryISOCode && <FlagIcon code={countryISOCode} size={14} />}
             {country}&nbsp;({countryISOCode})
           </div>
         )}
