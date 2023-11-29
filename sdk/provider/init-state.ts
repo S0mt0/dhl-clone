@@ -14,4 +14,10 @@ export const GlobalInitState: TGlobalContext = {
       shipDispatch: () => {},
     },
   },
+
+  mobileMenuStore: {
+    isMobileMenuOpen: false,
+    closeMenu: () => null,
+    openMenu: () => null,
+  },
 };

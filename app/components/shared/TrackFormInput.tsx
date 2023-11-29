@@ -1,37 +1,29 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { useFetchShipmentFunc } from "@/sdk";
+import { useFetchShipmentFunc, useGlobalProvider } from "@/sdk";
 
 import _ from "../../styles/home.module.scss";
 
-const TrackFormInput = ({ toggleMenu }: { toggleMenu?: () => void }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
+const TrackFormInput = () => {
   const router = useRouter();
   const query = useSearchParams().get("tracking-id")?.trim();
 
   const { handleInputChange, trackingNumber } = useFetchShipmentFunc(query);
 
-  useEffect(() => {
-    toggleMenu && toggleMenu();
-  }, [toggleMenu, query]);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
+  const {
+    mobileMenuStore: { closeMenu },
+  } = useGlobalProvider();
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         router.push(`/tracking?tracking-id=${trackingNumber.trim()}`);
-        toggleMenu && trackingNumber.trim() === query?.trim() && toggleMenu();
+        setTimeout(() => {
+          closeMenu();
+        });
       }}
       className={_.form}
     >

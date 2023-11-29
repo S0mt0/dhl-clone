@@ -4,37 +4,36 @@ import Link from "next/link";
 
 import { FiExternalLink, FiSearch } from "react-icons/fi";
 import { BsChevronDown, BsGlobe2 } from "react-icons/bs";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { MdClose } from "react-icons/md";
 import { FlagIconCode } from "react-flag-kit";
 
 import axios from "axios";
 
+import { useGlobalProvider } from "@/sdk";
+
 import MobileNavSticky from "./stickyMobileMenu";
 import DesktopNavSticky from "./stickyDesktopMenu";
 import MobileMenu from "./mobileMenu";
-import BackTopButton from "../../back-to-top-btn";
 
 import _ from "../../../styles/header.module.scss";
+import MobileMenuButton from "./menu-btn";
 
 const Header = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [country, setCountry] = useState("");
   const [countryISOCode, setCountryISOCode] = useState<FlagIconCode | null>(
     null
   );
 
-  const toggleMenu = () => {
-    setMenuIsOpen((current) => !current);
-  };
+  const {
+    mobileMenuStore: { isMobileMenuOpen },
+  } = useGlobalProvider();
 
   useEffect(() => {
-    if (menuIsOpen) {
+    if (isMobileMenuOpen) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "auto";
     }
-  }, [menuIsOpen]);
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     let isMounted = true;
@@ -60,7 +59,7 @@ const Header = () => {
   return (
     <>
       <header className={_.Header} id="no-print">
-        <MobileNavSticky toggleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
+        <MobileNavSticky />
         <DesktopNavSticky />
         <nav>
           <Link href="/" title="DHL Logo" className={_.logo}>
@@ -88,13 +87,7 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className={_.menu_btn}>
-            {!menuIsOpen ? (
-              <GiHamburgerMenu onClick={toggleMenu} />
-            ) : (
-              <MdClose onClick={toggleMenu} />
-            )}
-          </div>
+          <MobileMenuButton />
         </nav>
         {/*  */}
         {/*  */}
@@ -124,15 +117,7 @@ const Header = () => {
           </a>
         </div>
       </header>
-      {!menuIsOpen && <BackTopButton />}
-      {menuIsOpen && (
-        <MobileMenu
-          toggleMenu={toggleMenu}
-          menuIsOpen={menuIsOpen}
-          country={country}
-          countryISOCode={countryISOCode!}
-        />
-      )}
+      <MobileMenu country={country} countryISOCode={countryISOCode!} />
     </>
   );
 };

@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import ServiceUpdate from "./service-update";
 
 import _ from "../styles/home.module.scss";
+import BackToTopButton from "./back-to-top-btn";
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
       <ServiceUpdate />
       <Sections />
       <More />
+      <BackToTopButton />
     </div>
   );
 };

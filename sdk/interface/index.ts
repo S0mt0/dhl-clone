@@ -96,6 +96,12 @@ export type TGlobalContext = {
       shipDispatch: React.Dispatch<TShipmentAction>;
     };
   };
+
+  mobileMenuStore: {
+    isMobileMenuOpen: boolean;
+    closeMenu: () => void;
+    openMenu: () => void;
+  };
 };
 
 // checkout

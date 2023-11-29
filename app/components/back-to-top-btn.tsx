@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { BsChevronUp } from "react-icons/bs";
 
 import _ from "../styles/home.module.scss";
+import { useGlobalProvider } from "@/sdk";
 
-const BackTopButton = () => {
+const BackToTopButton = () => {
   const [showBackToTopBtn, setShowBackToTopBtn] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,10 @@ const BackTopButton = () => {
     };
   });
 
+  const {
+    mobileMenuStore: { isMobileMenuOpen },
+  } = useGlobalProvider();
+
   const handleScroll = () => {
     window.scrollTo({
       top: 0,
@@ -30,16 +35,20 @@ const BackTopButton = () => {
   };
 
   return (
-    <button
-      className={_.btt}
-      onClick={handleScroll}
-      style={{
-        display: showBackToTopBtn ? "grid" : "none",
-      }}
-    >
-      <BsChevronUp />
-    </button>
+    <>
+      {!isMobileMenuOpen ? (
+        <button
+          className={_.btt}
+          onClick={handleScroll}
+          style={{
+            display: showBackToTopBtn ? "grid" : "none",
+          }}
+        >
+          <BsChevronUp />
+        </button>
+      ) : null}
+    </>
   );
 };
 
-export default BackTopButton;
+export default BackToTopButton;

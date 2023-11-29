@@ -5,15 +5,12 @@ import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 
-import _ from "../../../styles/header.module.scss";
+import { useGlobalProvider } from "@/sdk";
 
-const MobileNavSticky = ({
-  menuIsOpen,
-  toggleMenu,
-}: {
-  toggleMenu: () => void;
-  menuIsOpen: boolean;
-}) => {
+import _ from "../../../styles/header.module.scss";
+import MobileMenuButton from "./menu-btn";
+
+const MobileNavSticky = () => {
   const [showStickyNav, setShowStickyNav] = useState(false);
 
   useEffect(() => {
@@ -44,13 +41,7 @@ const MobileNavSticky = ({
           <img src={"/dhl-logo.svg"} alt="DHL Logo" />
         </Link>
 
-        <div className={_.menu_btn}>
-          {!menuIsOpen ? (
-            <GiHamburgerMenu onClick={toggleMenu} />
-          ) : (
-            <MdClose onClick={toggleMenu} />
-          )}{" "}
-        </div>
+        <MobileMenuButton />
       </nav>
     </header>
   );
