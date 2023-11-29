@@ -19,7 +19,7 @@ const TrackFormInput = () => {
 
 
   const toggleMenu = ()=>{
-   if(pathname.includes(’tracking’) {
+   if(pathname.includes(’tracking’)){
      closeMenu()
    }
   }
