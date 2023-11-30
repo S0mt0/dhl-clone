@@ -8,14 +8,25 @@ import { useGlobalProvider } from "@/sdk";
 const BackToTopButton = () => {
   const [showBackToTopBtn, setShowBackToTopBtn] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        return setShowBackToTopBtn(true);
-      }
-      setShowBackToTopBtn(false);
-    };
+  // const [isVisible, setIsVisible] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
+  useEffect(() => {
+    // const handleScroll = () => {
+    //   if (window.scrollY <= -50) {
+    //     return setShowBackToTopBtn(true);
+    //   }
+    //   setShowBackToTopBtn(false);
+    // };
+
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      // Set visibility based on the scroll direction
+      setShowBackToTopBtn(
+        currentScrollPos < prevScrollPos && currentScrollPos > 50
+      );
+      setPrevScrollPos(currentScrollPos);
+    };
     window.addEventListener("scroll", handleScroll);
 
     return () => {

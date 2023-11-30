@@ -1,8 +1,14 @@
 import "./globals.css";
 
+import { Metadata } from "next";
+
 import Footer from "./components/layout/footer";
 import Header from "./components/layout/header";
 import GlobalPovider from "@/sdk/provider";
+
+// export const metadata: Metadata = {
+//   title: '...',
+// }
 
 export async function generateMetadata() {
   const IPData = await fetch(" https://ipapi.co/json/").then((response) =>
