@@ -64,14 +64,6 @@ const MobileMenu = ({
                 {country}&nbsp;({countryISOCode})
               </div>
             )}
-
-            {/*  */}
-            {/*  */}
-            <div className={_.cs}>
-              <Link href="/payment-policy" onClick={closeMenu}>
-                <small style={{ color: "grey" }}>Terms and Policies</small>
-              </Link>
-            </div>
           </div>
         </div>
       ) : null}

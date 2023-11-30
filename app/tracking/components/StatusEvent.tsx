@@ -31,7 +31,7 @@ const StatusEvent = ({ status }: { status: TShipment["status"] }) => {
         {status.status === "seized" && (
           <small>
             To redeem your shipment, kindly{" "}
-            <Link href="/payment-policy">read for more details.</Link>
+            <Link href="/checkout">PAY EXTRA COST OF SHIPPING</Link>
           </small>
         )}
         {/*  */}
