@@ -4,13 +4,9 @@ import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 import { BsChevronRight } from "react-icons/bs";
 
-import { useState } from "react";
-
 import _ from "../styles/home.module.scss";
 
 const ServiceUpdate = () => {
-  const [user, setUser] = useState<any>(null);
-
   return (
     <div className={_.update_con}>
       <div>

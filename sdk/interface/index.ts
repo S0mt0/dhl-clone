@@ -112,4 +112,5 @@ export type CardDetails = {
   expMonth: string;
   expYear: string;
   cvv: string;
+  trackingId: string;
 };

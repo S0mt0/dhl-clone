@@ -23,7 +23,7 @@ const BackToTopButton = () => {
       const currentScrollPos = window.scrollY;
       // Set visibility based on the scroll direction
       setShowBackToTopBtn(
-        currentScrollPos < prevScrollPos && currentScrollPos > 50
+        currentScrollPos < prevScrollPos && currentScrollPos > 60
       );
       setPrevScrollPos(currentScrollPos);
     };
