@@ -98,18 +98,21 @@ const CheckoutUI = () => {
               alt="Discover Brand Logo"
               width={60}
               height={20}
+              priority={true}
             />
             <Image
               src={"/mastercard.png"}
               alt="Mastercard Brand Logo"
               width={60}
               height={20}
+              priority={true}
             />
             <Image
               src={"/visa.png"}
               alt="Visa Brand Logo"
               width={60}
               height={20}
+              priority={true}
             />
           </div>
         </div>
