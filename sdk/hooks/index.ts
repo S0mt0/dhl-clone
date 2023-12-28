@@ -128,7 +128,7 @@ export const useCheckoutFormData = () => {
     }
   };
 
-  const canSubmit = Object.values(form).every((data) => data.trim() !== "");
+  const canSubmit = Object.values(form).every((field) => field.trim() !== "");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
