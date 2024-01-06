@@ -217,8 +217,8 @@ const CheckoutUI = () => {
           {/*  */}
           <div className={_.disclaimer}>
             <p>
-              By utilizing DHLimited&apos;s logistics services, you acknowledge
-              and expressly agree to adhere to the{" "}
+              By utilizing DHLShipping&apos;s logistics services, you
+              acknowledge and expressly agree to adhere to the{" "}
               <Link href={"/payment-policy"}>terms and conditions</Link>{" "}
               regarding shipment seizure, customs clearance, and associated
               payments.

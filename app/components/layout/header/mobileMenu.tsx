@@ -48,7 +48,7 @@ const MobileMenu = ({
             {/*  */}
             <div className={_.cs}>
               <a
-                href="mailto:dhlimited.office@gmail.com"
+                href="mailto:DHLShipping.office@gmail.com"
                 rel="noreferrer noopener"
                 onClick={closeMenu}
               >

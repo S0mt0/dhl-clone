@@ -6,32 +6,32 @@ export const faq = {
       a: "Yes, under certain conditions. We strongly advise you to make a record of your tracking number. If you have a reference number from the shipper instead, you can use our online Shipper’s Reference Tracking service.",
     },
     {
-      q: "When I tried to track my DHLimited shipment, I received an invalid waybill error message. Why?",
+      q: "When I tried to track my DHLShipping shipment, I received an invalid waybill error message. Why?",
 
-      a: "The DHLimited Express Waybill for Time Definite shipments is a 10 digit numeric number (e.g. 1234567890, 2345678901), so please recheck the number and try again. If your tracking number does not fit this format, please try one of the other tracking systems.",
+      a: "The DHLShipping Express Waybill for Time Definite shipments is a 10 digit numeric number (e.g. 1234567890, 2345678901), so please recheck the number and try again. If your tracking number does not fit this format, please try one of the other tracking systems.",
     },
     {
-      q: "As an account customer with DHLimited, is there a tracking solution I can use to receive an overview of all shipments on my account?",
+      q: "As an account customer with DHLShipping, is there a tracking solution I can use to receive an overview of all shipments on my account?",
 
-      a: "Yes, DHLimited ProView is a web-based shipment visibility and event notification tool specifically designed to improve tracking for DHL Express account holders. Please refer to your local DHL website to find out if DHL ProView is available in your country. While not available globally right now, it will be available in all countries in the near future.",
+      a: "Yes, DHLShipping ProView is a web-based shipment visibility and event notification tool specifically designed to improve tracking for DHL Express account holders. Please refer to your local DHL website to find out if DHL ProView is available in your country. While not available globally right now, it will be available in all countries in the near future.",
     },
   ],
 
   faqSuccess: [
     {
-      q: "When I track my international DHLimited Express shipments, why do I sometimes get information for a shipment that is not going to the intended destination?",
+      q: "When I track my international DHLShipping Express shipments, why do I sometimes get information for a shipment that is not going to the intended destination?",
 
-      a: "DHLimited periodically recycles shipment waybill numbers for operational reasons. Occasionally this results in information in our system for two shipments travelling under the same waybill number at the same time. DHL is working hard to eliminate these occurrences. In the meantime, please be assured that while this information may be confusing, your physical shipment will be heading to its correct destination and receiving the same careful attention as every other shipment in our network.",
+      a: "DHLShipping periodically recycles shipment waybill numbers for operational reasons. Occasionally this results in information in our system for two shipments travelling under the same waybill number at the same time. DHL is working hard to eliminate these occurrences. In the meantime, please be assured that while this information may be confusing, your physical shipment will be heading to its correct destination and receiving the same careful attention as every other shipment in our network.",
     },
     {
-      q: "I have tracked a shipment and been told to contact DHLimited. Why is this?",
+      q: "I have tracked a shipment and been told to contact DHLShipping. Why is this?",
 
       a: `This usually occurs if the information we have is insufficient to track the shipment for you. Additional information or clarification may be required in the event of an incorrect address, for example. The matter can be resolved very quickly by contacting customer services.`,
     },
     {
       q: "The tracking results are showing that my shipment is going to a different town or city than it was initially addressed to. Why is this?",
 
-      a: "Destinations shown on DHLimited Express tracking results are based on the location of the Service Station  providing that pickup or delivery. Please be assured that your shipment is being delivered to the destination provided by you when you completed the waybill for your shipment(s).",
+      a: "Destinations shown on DHLShipping Express tracking results are based on the location of the Service Station  providing that pickup or delivery. Please be assured that your shipment is being delivered to the destination provided by you when you completed the waybill for your shipment(s).",
     },
     {
       q: "How do I learn who signed for my shipment?",
@@ -39,9 +39,9 @@ export const faq = {
       a: "By verifying your identity on our Proof of Delivery site you can find further recipient details, including who signed for your shipment.",
     },
     {
-      q: "As an account customer with DHLimited, is there a tracking solution I can use to receive an overview of all shipments on my account?",
+      q: "As an account customer with DHLShipping, is there a tracking solution I can use to receive an overview of all shipments on my account?",
 
-      a: "Yes, DHLimited ProView is a web-based shipment visibility and event notification tool specifically designed to improve tracking for DHL Express account holders. Please refer to your local DHL website to find out if DHL ProView is available in your country. While not available globally right now, it will be available in all countries in the near future.",
+      a: "Yes, DHLShipping ProView is a web-based shipment visibility and event notification tool specifically designed to improve tracking for DHL Express account holders. Please refer to your local DHL website to find out if DHL ProView is available in your country. While not available globally right now, it will be available in all countries in the near future.",
     },
     {
       q: "My shipment is showing 'Custom status updated from the destination,' even though the shipment just left the country. What does this mean?",

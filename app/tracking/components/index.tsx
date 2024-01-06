@@ -71,7 +71,7 @@ const Index = () => {
                       <p> Tracking Code: {shipment.trackingId}</p>
                       <p>
                         This shipment is handled by:{" "}
-                        <span>DHLimited Express</span>
+                        <span>DHLShipping Express</span>
                       </p>
                     </div>
                     <PrintButton />
@@ -218,10 +218,10 @@ const Index = () => {
             location of your shipment, please
             <br />
             <a
-              href="mailto:dhlimited.office@gmail.com"
+              href="mailto:DHLShipping.office@gmail.com"
               rel="noreferrer noopener"
             >
-              contact DHLimited Express Customer Service
+              contact DHLShipping Express Customer Service
             </a>
           </p>
 
